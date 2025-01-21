@@ -87,11 +87,21 @@
     const modal = document.createElement("div");
     modal.className = "modal fade";
     modal.id = "coinModal";
+    modal.tabIndex = -1;
+    modal.setAttribute("aria-labelledby", "coinModalLabel");
+    modal.setAttribute("aria-hidden", "true");
+
+    const priceInUSD = coinDetails.market_data.current_price.usd.toFixed(2);
+    const priceInEUR = coinDetails.market_data.current_price.eur.toFixed(2);
+    const priceInILS = coinDetails.market_data.current_price.ils.toFixed(2);
+
     modal.innerHTML = `
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">${coinDetails.name} Details</h5>
+            <h5 class="modal-title" id="coinModalLabel">${
+              coinDetails.name
+            } Details</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
@@ -100,13 +110,17 @@
               0,
               200
             )}...</p>
-            <p><strong>Current Price (USD):</strong> $${coinDetails.market_data.current_price.usd.toFixed(
-              2
-            )}</p>
+            <p><strong>Current Price:</strong></p>
+            <ul>
+              <li><strong>USD:</strong> $${priceInUSD}</li>
+              <li><strong>EUR:</strong> €${priceInEUR}</li>
+              <li><strong>ILS:</strong> ₪${priceInILS}</li>
+            </ul>
           </div>
         </div>
       </div>
     `;
+
     document.body.appendChild(modal);
     const bootstrapModal = new bootstrap.Modal(modal);
     bootstrapModal.show();
