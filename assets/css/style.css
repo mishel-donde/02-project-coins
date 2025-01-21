@@ -149,13 +149,13 @@ button:hover {
 .about-heading {
   font-size: 2rem;
   font-weight: bold;
-  color: #454444;
+  color: black;
   margin-bottom: 1em;
 }
 
 .about-project-heading {
   font-size: 1.5rem;
-  color: #141414;
+  color: black;
   margin-top: 1.5em;
   margin-bottom: 1em;
 }
@@ -163,7 +163,7 @@ button:hover {
 .about-container p {
   font-size: 1rem;
   line-height: 1.6;
-  color: #2d2d2d;
+  color: #0c0c0c;
 }
 
 .project-list {
