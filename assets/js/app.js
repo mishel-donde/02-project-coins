@@ -1,6 +1,6 @@
 "use strict";
 
-(() => {
+(async () => {
   const API_URL =
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd";
   const coinsContainer = document.getElementById("coins-container");
@@ -153,7 +153,7 @@
       const datasets = [];
       for (const coinId of selectedCoins) {
         const response = await fetch(
-          `https://api.allorigins.win/raw?url=https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=7`
+          `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=7`
         );
 
         if (!response.ok) throw new Error(`Failed to fetch data for ${coinId}`);
@@ -204,7 +204,7 @@
     } catch (error) {
       console.error("Error fetching or rendering graph data:", error);
       graphContainer.innerHTML =
-        "<p>Failed to load graph data. Please try again later.</p>";
+        "<p>Failed to load the graph. Please try again later.</p>";
     }
   }
 
